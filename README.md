@@ -1,4 +1,4 @@
-# YOLOv4 + Deep_SORT+person_reID_baseline
+# YOLOv4 + Deep_SORT + person_reID_baseline
 
 ## Requirement
 
