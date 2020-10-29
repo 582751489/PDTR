@@ -137,12 +137,12 @@ Then the detection and tracking video will be in folder 'output', named 'output'
 Then the detection and tracking video will be in folder 'output', named 'output_reid'+'camera ID', and won't save the pedestrian images.This video will only tracking the target pedestrian with color boxes, ID and path line.
 
 __test.py__
-You should indicate the re-identificateion model before '--name' and pedestrian path before '--test_dir'.
+1) You should indicate the re-identificateion model before '--name' and pedestrian path before '--test_dir'.
 eg: python test.py  --name PCB --test_dir Z:\pro2\whole\person
 According to the folder 'person' to do feature extraction and saving, the saving path will be the root path named 'pytorch_result.mat'.
 
 __demo.py__
-You should indicate the re-identified target ID before '--query_index' and camera ID before '--camera'.
+1) You should indicate the re-identified target ID before '--query_index' and camera ID before '--camera'.
 eg: python demo.py --query_index 12 --camera c1 
 It is for re-identification by camparing the feature similarity according to file 'pytorch_result.mat'. It will give two output, one is a photo to show the top 10 most similar person, for later evaluation. And another output is the re-identified result: the Camera ID and pedestrian ID.
 
