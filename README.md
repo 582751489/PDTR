@@ -152,7 +152,7 @@ It is for re-identification by camparing the feature similarity according to fil
 
 #### Github:https://github.com/yehengchen/Object-Detection-and-Tracking/tree/master/OneStage/yolo/deep_sort_yolov4
 
-#### Github:https://github.com/layumi/Person_reID_baseline_pytorchhttps://github.com/Qidian213/deep_sort_yolov3)
+#### Github:https://github.com/layumi/Person_reID_baseline_pytorchhttps://github.com/Qidian213/deep_sort_yolov3
 
-#### Github:https://github.com/bubbliiiing/yolov4-kerashttps://github.com/LeonLok/Deep-SORT-YOLOv4)
+#### Github:https://github.com/bubbliiiing/yolov4-kerashttps://github.com/LeonLok/Deep-SORT-YOLOv4
 
