@@ -119,6 +119,8 @@ You may also try `evaluate_gpu.py` to conduct a faster evaluation with GPU.
 
 For mAP calculation, you also can refer to the [C++ code for Oxford Building](http://www.robots.ox.ac.uk/~vgg/data/oxbuildings/compute_ap.cpp). We use the triangle mAP calculation (consistent with the Market1501 original code).
 
+For more evaluation process, go to this ling [Evaluation for PDTR](https://github.com/582751489/Evaluation_for_PDTR.git)
+
 ## Visualization
 
 ```python vis.py
