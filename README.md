@@ -2,7 +2,7 @@
 
 ## Requirement
 
-__Development Environment: 
+__Development Environment:__
 
 * OpenCV
 * sklean
