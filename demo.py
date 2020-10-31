@@ -11,7 +11,7 @@ from collections import Counter
 #######################################################################
 # Evaluate
 parser = argparse.ArgumentParser(description='Demo')
-parser.add_argument('--query_index',default='2', type=int, help='test_image_index')
+parser.add_argument('--query_index',default='12', type=int, help='test_image_index')
 parser.add_argument('--test_dir',default='./person',type=str, help='./test_data')
 parser.add_argument('--camera',default='c1', type=str, help='test_image_index')
 opts = parser.parse_args()
@@ -32,7 +32,6 @@ def imshow(path, title=None):
 
 def sort_img(qf, ql, qc, gf, gl, gc):
     query = qf.view(-1,1)#维度n*1
-    # print(query.shape)
     score = torch.mm(gf,query)#矩阵相乘
     score = score.squeeze(1).cpu()#np.squeeze这个函数的作用是去掉矩阵里维度为1的维度
     score = score.numpy()
@@ -47,12 +46,7 @@ def sort_img(qf, ql, qc, gf, gl, gc):
     
     #same camera#  
     camera_index = np.argwhere(gc==qc) 
-    #good_index = np.setdiff1d(query_index, camera_index, assume_unique=True)
-    #junk_index1 = np.argwhere(gl==-1)
     junk_index = np.intersect1d(query_index, camera_index)#交集
-    #junk_index = np.append(junk_index2, junk_index1) 
-
-#    mask = np.in1d(index, junk_index1, invert=True)
     mask = np.in1d(index, junk_index, invert=True)
     index = index[mask]
     return index
@@ -121,24 +115,21 @@ def main():
             imshow(img_path)
             ID = str(reindex(gallery_label[index[i]])[0])
             ax.set_title('C%s_'%label +'ID%s'%ID, color='green')
-     #       label = gallery_label[index[i]]
-     #       ax.set_title('%d'%(i+1), color='green')
-     #       if label == query_label:
-     #           ax.set_title('%d'%(i+1), color='green')
-     #       else:
-     #          ax.set_title('%d'%(i+1), color='red')
-            #print(img_path)
         for j in range(350):
             ids.append(gallery_label[index[j]])
-        #print(ids)
         c = Counter(ids)
         d = c.most_common(4)
         print('Most common:'+str(d))
-        #print('%04d'%d[0][0],'%04d'%d[1][0])
         index1 = d[0][0] if d[0][1] > 80 else 999
         index2 = d[1][0] if d[1][1] > 58 else 999 #999 for none
-        print('ID:'+str(reindex(index1)[0])+' Camera:'+str(reindex(index1)[1]))
-        print('ID:'+str(reindex(index2)[0])+' Camera:'+str(reindex(index2)[1]))
+        if index1 == 999:
+            print('No such target was found!')
+        else:
+            print('ID:'+str(reindex(index1)[0])+' Camera:'+str(reindex(index1)[1]))
+        if index2 == 999:
+            print('No such target was found!')  
+        else:
+            print('ID:'+str(reindex(index2)[0])+' Camera:'+str(reindex(index2)[1]))
     except RuntimeError:
         for i in range(10):
             img_path = image_datasets.imgs[index[i]]
